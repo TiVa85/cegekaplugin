@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Parking Availability</title>
+  <style>
+    #availability {
+      color: white;
+      font-size: 70px;
+      font-weight: bold;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="availability">Laden...</div>
+
+  <script>
+    const url = "https://capacity.cegeka.com/api/v1.0/GetParkingAvailability/poml;paren";
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Netwerkfout: " + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // zelfde structuur als in je PHP code
+        const availability = data.data[0].availability;
+        document.getElementById("availability").textContent = availability;
+      })
+      .catch(error => {
+        console.error("Fout bij ophalen:", error);
+        document.getElementById("availability").textContent = "Error";
+      });
+  </script>
+
+</body>
+</html>
