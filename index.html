@@ -6,7 +6,7 @@
   <style>
     #availability {
       color: white;
-      font-size: 45px;
+      font-size: 40px;
       font-weight: bold;
       text-align: left;
     }
@@ -30,7 +30,7 @@
         const availability = data.data[0].availability;
         const availabilityElement = document.getElementById("availability");
 
-        if (availability < 0) {
+        if (availability < 1) {
           availabilityElement.textContent = "VOLZET 🚫";
         } else {
           availabilityElement.textContent = `Vrije parkeerplaatsen: ${availability}`;
