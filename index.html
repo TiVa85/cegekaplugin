@@ -27,13 +27,18 @@
         return response.json();
       })
       .then(data => {
-        // zelfde structuur als in je PHP code
         const availability = data.data[0].availability;
-        document.getElementById("availability").textContent = availability;
+        const availabilityElement = document.getElementById("availability");
+
+        if (availability < 0) {
+          availabilityElement.textContent = "VOLZET 🚫";
+        } else {
+          availabilityElement.textContent = `Vrije parkeerplaatsen: ${availability}`;
+        }
       })
       .catch(error => {
         console.error("Fout bij ophalen:", error);
-        document.getElementById("availability").textContent = "";
+        document.getElementById("availability").textContent = "Niet beschikbaar";
       });
   </script>
 
