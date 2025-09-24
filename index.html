@@ -30,7 +30,7 @@
         const availability = data.data[0].availability;
         const availabilityElement = document.getElementById("availability");
 
-        if (availability < 1) {
+        if (availability < 6) {
           availabilityElement.textContent = "VOLZET 🚫";
         } else {
           availabilityElement.textContent = `Vrije parkeerplaatsen: ${availability}`;
